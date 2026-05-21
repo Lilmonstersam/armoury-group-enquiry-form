@@ -1,262 +1,415 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact & Quotes - Armoury Group & Wheels</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Truck Wheel & Accessory Quotes - Armoury Group</title>
+    <meta name="description" content="Contact Armoury Group for truck wheel and accessory quotes. Get expert fitment advice for Armoury Wheels, alloy truck rims, and stainless truck accessories.">
+    <meta name="theme-color" content="#F58220">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-form" class="skip-link">Skip to enquiry form</a>
 
-    <main class="quote-page-container">
-        
-        <header class="page-header">
-            <h1 class="page-title">Enquire With Us</h1>
-            <p class="page-subtitle">Select your enquiry type below to get started.</p>
-        </header>
-
-        <div class="layout-grid">
-            
-            <!-- LEFT COLUMN: DYNAMIC FORM -->
-            <div class="form-container">
-                <div class="form-progress">
-                    <div class="step active" id="progress-step-1">
-                        <div class="step-num">1</div>
-                        <span>Contact Info</span>
-                    </div>
-                    <div class="step-divider"></div>
-                    <div class="step" id="progress-step-2">
-                        <div class="step-num">2</div>
-                        <span>Build Your Rig (optional)</span>
-                    </div>
-                </div>
-
-                <form id="quoteForm" novalidate>
-                    
-                    <!-- STEP 1 -->
-                    <div class="form-step active" id="step-1">
-                        <div class="form-group">
-                            <label for="enquiryType">Enquiry Type *</label>
-                            <div class="select-wrapper">
-                                <i class="ri-question-answer-line select-icon"></i>
-                                <select id="enquiryType" name="enquiryType" required>
-                                    <option value="" disabled selected>Select Enquiry Type</option>
-                                    <option value="Product & Quote Requests">Product & Quote Requests</option>
-                                    <option value="Business & Partnership">Business & Partnership</option>
-                                    <option value="Support & Technical Advice">Support & Technical Advice</option>
-                                    <option value="Others">Others</option>
-                                </select>
-                                <i class="ri-arrow-down-s-line select-arrow"></i>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group half">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required placeholder="John">
-                            </div>
-                            <div class="form-group half">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required placeholder="Smith">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group half">
-                                <label for="email">Email Address *</label>
-                                <div class="input-with-icon">
-                                    <i class="ri-mail-line"></i>
-                                    <input type="email" id="email" name="email" required placeholder="john@example.com">
-                                </div>
-                            </div>
-                            <div class="form-group half">
-                                <label for="phone">Phone Number *</label>
-                                <div class="input-with-icon">
-                                    <i class="ri-phone-line"></i>
-                                    <input type="tel" id="phone" name="phone" required placeholder="0400 000 000">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Additional Details / Fitment Queries</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Any specific requirements or questions?"></textarea>
-                        </div>
-
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-primary" id="btnNextStep1">
-                                <span id="btnNextStep1Text">Continue to Next Step</span> <i class="ri-arrow-right-line"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- STEP 2 -->
-                    <div class="form-step" id="step-2">
-                        
-                        <!-- Accessories Builder -->
-                        <div class="builder-section">
-                            <h3><i class="ri-truck-line"></i> Quote Truck Accessories</h3>
-                            <div class="form-group">
-                                <label for="truckModel">Truck Make & Model</label>
-                                <div class="select-wrapper">
-                                    <select id="truckModel" name="truckModel">
-                                        <option value="" disabled selected>Select your vehicle</option>
-                                        <option value="KENWORTH K200">KENWORTH K200</option>
-                                        <option value="KENWORTH K220">KENWORTH K220</option>
-                                        <option value="KENWORTH T360">KENWORTH T360</option>
-                                        <option value="KENWORTH T409">KENWORTH T409</option>
-                                        <option value="KENWORTH T410">KENWORTH T410</option>
-                                        <option value="KENWORTH T610">KENWORTH T610</option>
-                                        <option value="KENWORTH T659">KENWORTH T659</option>
-                                        <option value="KENWORTH T909">KENWORTH T909</option>
-                                        <option value="KENWORTH C509">KENWORTH C509</option>
-                                        <option value="LEGEND SAR">LEGEND SAR</option>
-                                        <option value="VOLVO">VOLVO</option>
-                                    </select>
-                                    <i class="ri-arrow-down-s-line select-arrow"></i>
-                                </div>
-                            </div>
-
-                            <div class="form-group hidden" id="accessoryDropdownGroup">
-                                <label>Select Accessories (Multi-select)</label>
-                                <div class="checkbox-list" id="accessoryList">
-                                    <!-- Rendered via JS -->
-                                </div>
-                            </div>
-                            
-                            <button type="button" class="btn btn-secondary w-full hidden" id="btnAddAccessory">Add Accessories to Quote <i class="ri-add-line"></i></button>
-                        </div>
-
-                        <hr class="section-divider">
-
-                        <!-- Wheel Builder -->
-                        <div class="builder-section">
-                            <h3><i class="ri-disc-line"></i> Quote Wheels</h3>
-                            <div class="form-row">
-                                <div class="form-group half">
-                                    <label for="wheelType">Wheel Type</label>
-                                    <div class="select-wrapper">
-                                        <select id="wheelType">
-                                            <option value="" disabled selected>Select Type</option>
-                                            <option value="DRIVE">DRIVE</option>
-                                            <option value="OFFSET STEER">OFFSET STEER</option>
-                                            <option value="STEER">STEER</option>
-                                            <option value="SUPER SINGLE">SUPER SINGLE</option>
-                                            <option value="TRAILER">TRAILER</option>
-                                        </select>
-                                        <i class="ri-arrow-down-s-line select-arrow"></i>
-                                    </div>
-                                </div>
-                                <div class="form-group half">
-                                    <label for="wheelFitment">Fitment</label>
-                                    <div class="select-wrapper">
-                                        <select id="wheelFitment">
-                                            <option value="" disabled selected>Select Fitment</option>
-                                            <option value="EURO/JAP">EURO/JAP</option>
-                                            <option value="US">US</option>
-                                            <option value="TRAILER">TRAILER</option>
-                                        </select>
-                                        <i class="ri-arrow-down-s-line select-arrow"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group half">
-                                    <label for="wheelSize">Size</label>
-                                    <div class="select-wrapper">
-                                        <select id="wheelSize">
-                                            <option value="" disabled selected>Select Size</option>
-                                            <option value="16&quot; X 5.5&quot;">16" X 5.5"</option>
-                                            <option value="17.5&quot; X 6.00&quot;">17.5" X 6.00"</option>
-                                            <option value="17.5&quot; X 6.75&quot;">17.5" X 6.75"</option>
-                                            <option value="17.5&quot; X 6&quot;">17.5" X 6"</option>
-                                            <option value="19.5&quot; X 6.75&quot;">19.5" X 6.75"</option>
-                                            <option value="19.5&quot; X 7.5&quot;">19.5" X 7.5"</option>
-                                            <option value="22.5&quot; X 11.75&quot;">22.5" X 11.75"</option>
-                                            <option value="22.5&quot; X 8.25&quot;">22.5" X 8.25"</option>
-                                        </select>
-                                        <i class="ri-arrow-down-s-line select-arrow"></i>
-                                    </div>
-                                </div>
-                                <div class="form-group half">
-                                    <label for="wheelFinish">Finish</label>
-                                    <div class="select-wrapper">
-                                        <select id="wheelFinish">
-                                            <option value="" disabled selected>Select Finish</option>
-                                            <option value="Legend Chrome">Legend Chrome</option>
-                                            <option value="ArmourBrite">ArmourBrite</option>
-                                            <option value="Polished">Polished</option>
-                                            <option value="Machined">Machined</option>
-                                        </select>
-                                        <i class="ri-arrow-down-s-line select-arrow"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <button type="button" class="btn btn-secondary w-full" id="btnAddWheel">Add Wheel to Quote <i class="ri-add-line"></i></button>
-                        </div>
-
-                        <div class="form-actions form-actions-between" style="margin-top:2rem;">
-                            <button type="button" class="btn btn-text prev-step" id="btnPrev"><i class="ri-arrow-left-line"></i> Back</button>
-                            <button type="submit" class="btn btn-primary submit-btn">
-                                <span>Submit Request</span>
-                                <i class="ri-send-plane-fill"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
-                <div class="trust-container">
-                    <div class="trust-badge">
-                        <img src="../Images/usp-icons/5-year-warranty.jpeg" alt="5-Year Warranty">
-                    </div>
-                    <div class="trust-badge">
-                        <img src="../Images/usp-icons/Australian STANDARDS-and-DOT CERTIFIED.jpeg" alt="Australian Standards and DOT Certified">
-                    </div>
-                    <div class="trust-badge">
-                        <img src="../Images/usp-icons/corrosion-resistent.jpeg" alt="Corrosion Resistant">
-                    </div>
-                </div>
-
-                <div class="contact-alternatives">
-                    <p>Or reach out to us directly:</p>
-                    <div class="contact-methods">
-                        <a href="tel:1300005576"><i class="ri-phone-fill"></i> 1300 005 576</a>
-                        <a href="mailto:sales@armourygroup.com.au"><i class="ri-mail-fill"></i> sales@armourygroup.com.au</a>
-                    </div>
-                </div>
-
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="site-logo" translate="no">
+                <img src="https://armourygroup.com.au/wp-content/uploads/2023/10/ArmouryGroup-wordmark-2-1.svg" alt="Armoury Group">
+            </a>
+            <div class="header-cta">
+                <a href="tel:1300005576" class="header-phone">
+                    <i class="ri-phone-fill" aria-hidden="true"></i>
+                    1300 005 576
+                </a>
+                <a href="#main-form" class="header-button">Request Quote</a>
             </div>
-
-            <!-- RIGHT COLUMN: QUOTE CART SUMMARY -->
-            <div class="cart-container">
-                <div class="cart-header">
-                    <h2><i class="ri-shopping-cart-2-line"></i> Quote Cart Summary</h2>
-                    <span class="badge" id="cartCount">0 Items</span>
-                </div>
-                
-                <div class="cart-body">
-                    <div id="emptyCart" class="empty-cart-state">
-                        <i class="ri-truck-line empty-icon"></i>
-                        <p>Your quote cart is empty.</p>
-                        <span>If you selected Quote Request, build your quote using the form. Otherwise, skip this step.</span>
-                    </div>
-
-                    <ul id="cartList" class="cart-list hidden">
-                        <!-- Items injected dynamically -->
-                    </ul>
-                </div>
-                
-                <div class="cart-footer">
-                    <p class="summary-note"><i class="ri-information-line"></i> This serves as an estimation request. Final fitment and pricing will be confirmed by an expert prior to invoicing.</p>
-                </div>
-            </div>
-
         </div>
+    </header>
+
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="/">Home</a><span>|</span><strong>Enquiries</strong>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-content">
+                        <span class="eyebrow">Armoury Wheels &amp; Truck Accessories</span>
+                        <h1>Get The Right Gear For Your Rig</h1>
+                        <p class="hero-subtitle">Tell us what you drive, what you need, and how you use it. Our team will confirm fitment, availability, and the best path to a clean quote.</p>
+
+                        <div class="contact-cards" aria-label="Contact options">
+                            <a href="tel:1300005576" class="contact-card">
+                                <span class="icon-wrap"><i class="ri-phone-fill" aria-hidden="true"></i></span>
+                                <span>
+                                    <span class="contact-card-text">Call the team</span>
+                                    <span class="contact-card-value">1300 005 576</span>
+                                </span>
+                            </a>
+                            <a href="mailto:sales@armourygroup.com.au" class="contact-card">
+                                <span class="icon-wrap"><i class="ri-mail-fill" aria-hidden="true"></i></span>
+                                <span>
+                                    <span class="contact-card-text">Email sales</span>
+                                    <span class="contact-card-value">sales@armourygroup.com.au</span>
+                                </span>
+                            </a>
+                            <a href="#main-form" class="contact-card">
+                                <span class="icon-wrap"><i class="ri-tools-fill" aria-hidden="true"></i></span>
+                                <span>
+                                    <span class="contact-card-text">Need fitment advice?</span>
+                                    <span class="contact-card-value">Build a quote request</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-section" id="main-form">
+            <div class="container">
+                <div class="form-header">
+                    <div class="section-label">Quote Request</div>
+                    <h2>Tell Us What You Need</h2>
+                    <p>Send through your details, select any known products, or ask the Armoury team to recommend the right setup.</p>
+                </div>
+
+                <div class="form-section-inner">
+                    <div class="form-main">
+                        <div class="service-area-note">
+                            <i class="ri-truck-fill" aria-hidden="true"></i>
+                            We quote wheels and accessories for truck operators, workshops, and fleet buyers across Australia.
+                        </div>
+
+                        <div class="form-card">
+                            <div class="form-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="2" aria-label="Form progress">
+                                <div class="step active" id="progress-step-1">
+                                    <div class="step-num">1</div>
+                                    <span>Contact Info</span>
+                                </div>
+                                <div class="step-divider"></div>
+                                <div class="step" id="progress-step-2">
+                                    <div class="step-num">2</div>
+                                    <span>Product Selection</span>
+                                </div>
+                            </div>
+
+                            <form id="quoteForm" novalidate>
+                                <div class="form-body">
+                                    <div class="form-step active" id="step-1">
+                                        <h3 class="step-title">Your Details</h3>
+                                        <p class="step-subtitle">The essentials we need to get back to you.</p>
+
+                                        <div class="form-group">
+                                            <label for="enquiryType">Enquiry Type <span class="required">*</span></label>
+                                            <div class="select-wrapper">
+                                                <i class="ri-question-answer-line select-icon" aria-hidden="true"></i>
+                                                <select id="enquiryType" name="enquiryType" required>
+                                                    <option value="" disabled selected>Select enquiry type</option>
+                                                    <option value="Product & Quote Requests">Product &amp; Quote Requests</option>
+                                                    <option value="Business & Partnership">Business &amp; Partnership</option>
+                                                    <option value="Support & Technical Advice">Support &amp; Technical Advice</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                                <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group half">
+                                                <label for="firstName">First Name <span class="required">*</span></label>
+                                                <input type="text" id="firstName" name="firstName" required placeholder="John" autocomplete="given-name">
+                                            </div>
+                                            <div class="form-group half">
+                                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                                <input type="text" id="lastName" name="lastName" required placeholder="Smith" autocomplete="family-name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group half">
+                                                <label for="email">Email Address <span class="required">*</span></label>
+                                                <div class="input-with-icon">
+                                                    <i class="ri-mail-line" aria-hidden="true"></i>
+                                                    <input type="email" id="email" name="email" required placeholder="john@example.com" autocomplete="email">
+                                                </div>
+                                            </div>
+                                            <div class="form-group half">
+                                                <label for="phone">Phone Number <span class="required">*</span></label>
+                                                <div class="input-with-icon">
+                                                    <i class="ri-phone-line" aria-hidden="true"></i>
+                                                    <input type="tel" id="phone" name="phone" required placeholder="0400 000 000" autocomplete="tel">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="message">Additional Details <span class="optional">(optional)</span></label>
+                                            <textarea id="message" name="message" rows="4" placeholder="Tell us about fitment questions, fleet quantity, timing, or anything unusual."></textarea>
+                                        </div>
+
+                                        <div class="form-actions">
+                                            <button type="button" class="btn btn-primary" id="btnNextStep1">
+                                                <span id="btnNextStep1Text">Continue to Products</span>
+                                                <i class="ri-arrow-right-line" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-step" id="step-2">
+                                        <h3 class="step-title">Product Selection</h3>
+                                        <p class="step-subtitle">Add wheels, accessories, free-text notes, or ask us to recommend the right setup.</p>
+
+                                        <div class="builder-section">
+                                            <h4><i class="ri-truck-line" aria-hidden="true"></i> Truck Accessories</h4>
+                                            <div class="form-group">
+                                                <label for="truckModel">Truck Make &amp; Model</label>
+                                                <div class="select-wrapper">
+                                                    <select id="truckModel" name="truckModel">
+                                                        <option value="" disabled selected>Select your vehicle</option>
+                                                        <option value="KENWORTH K200">KENWORTH K200</option>
+                                                        <option value="KENWORTH K220">KENWORTH K220</option>
+                                                        <option value="KENWORTH T360">KENWORTH T360</option>
+                                                        <option value="KENWORTH T409">KENWORTH T409</option>
+                                                        <option value="KENWORTH T410">KENWORTH T410</option>
+                                                        <option value="KENWORTH T610">KENWORTH T610</option>
+                                                        <option value="KENWORTH T659">KENWORTH T659</option>
+                                                        <option value="KENWORTH T909">KENWORTH T909</option>
+                                                        <option value="KENWORTH C509">KENWORTH C509</option>
+                                                        <option value="LEGEND SAR">LEGEND SAR</option>
+                                                        <option value="VOLVO">VOLVO</option>
+                                                        <option value="Other">Other / not listed</option>
+                                                    </select>
+                                                    <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group hidden" id="accessoryDropdownGroup">
+                                                <label>Select Accessories <span class="optional">(optional)</span></label>
+                                                <div class="checkbox-list" id="accessoryList"></div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="accessoryFreeText">Accessory Request <span class="optional">(optional)</span></label>
+                                                <textarea id="accessoryFreeText" name="accessoryFreeText" rows="3" placeholder="List accessories, part names, or describe the look you want."></textarea>
+                                            </div>
+
+                                            <label class="recommendation-option">
+                                                <input type="checkbox" id="accessoryRecommend" name="accessoryRecommend" value="Yes">
+                                                <span>
+                                                    <strong>Recommend accessories for my truck</strong>
+                                                    <small>We will suggest suitable accessories based on your truck model and notes.</small>
+                                                </span>
+                                            </label>
+
+                                            <button type="button" class="btn btn-secondary w-full" id="btnAddAccessory">
+                                                Add Accessories to Quote
+                                                <i class="ri-add-line" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+
+                                        <hr class="section-divider">
+
+                                        <div class="builder-section">
+                                            <h4><i class="ri-disc-line" aria-hidden="true"></i> Armoury Wheels</h4>
+
+                                            <div class="form-group">
+                                                <label for="wheelTruckModel">Truck Make &amp; Model</label>
+                                                <div class="select-wrapper">
+                                                    <select id="wheelTruckModel" name="wheelTruckModel">
+                                                        <option value="" disabled selected>Select your vehicle</option>
+                                                        <option value="KENWORTH K200">KENWORTH K200</option>
+                                                        <option value="KENWORTH K220">KENWORTH K220</option>
+                                                        <option value="KENWORTH T360">KENWORTH T360</option>
+                                                        <option value="KENWORTH T409">KENWORTH T409</option>
+                                                        <option value="KENWORTH T410">KENWORTH T410</option>
+                                                        <option value="KENWORTH T610">KENWORTH T610</option>
+                                                        <option value="KENWORTH T659">KENWORTH T659</option>
+                                                        <option value="KENWORTH T909">KENWORTH T909</option>
+                                                        <option value="KENWORTH C509">KENWORTH C509</option>
+                                                        <option value="LEGEND SAR">LEGEND SAR</option>
+                                                        <option value="VOLVO">VOLVO</option>
+                                                        <option value="Other">Other / not listed</option>
+                                                    </select>
+                                                    <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group half">
+                                                    <label for="wheelType">Wheel Type</label>
+                                                    <div class="select-wrapper">
+                                                        <select id="wheelType" name="wheelType">
+                                                            <option value="" disabled selected>Select type</option>
+                                                            <option value="DRIVE">DRIVE</option>
+                                                            <option value="OFFSET STEER">OFFSET STEER</option>
+                                                            <option value="STEER">STEER</option>
+                                                            <option value="SUPER SINGLE">SUPER SINGLE</option>
+                                                            <option value="TRAILER">TRAILER</option>
+                                                        </select>
+                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group half">
+                                                    <label for="wheelFitment">Fitment</label>
+                                                    <div class="select-wrapper">
+                                                        <select id="wheelFitment" name="wheelFitment">
+                                                            <option value="" disabled selected>Select fitment</option>
+                                                            <option value="EURO/JAP">EURO/JAP</option>
+                                                            <option value="US">US</option>
+                                                            <option value="TRAILER">TRAILER</option>
+                                                        </select>
+                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group half">
+                                                    <label for="wheelSize">Size</label>
+                                                    <div class="select-wrapper">
+                                                        <select id="wheelSize" name="wheelSize">
+                                                            <option value="" disabled selected>Select size</option>
+                                                            <option value="16&quot; X 5.5&quot;">16" X 5.5"</option>
+                                                            <option value="17.5&quot; X 6.00&quot;">17.5" X 6.00"</option>
+                                                            <option value="17.5&quot; X 6.75&quot;">17.5" X 6.75"</option>
+                                                            <option value="17.5&quot; X 6&quot;">17.5" X 6"</option>
+                                                            <option value="19.5&quot; X 6.75&quot;">19.5" X 6.75"</option>
+                                                            <option value="19.5&quot; X 7.5&quot;">19.5" X 7.5"</option>
+                                                            <option value="22.5&quot; X 11.75&quot;">22.5" X 11.75"</option>
+                                                            <option value="22.5&quot; X 8.25&quot;">22.5" X 8.25"</option>
+                                                        </select>
+                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group half">
+                                                    <label for="wheelFinish">Finish</label>
+                                                    <div class="select-wrapper">
+                                                        <select id="wheelFinish" name="wheelFinish">
+                                                            <option value="" disabled selected>Select finish</option>
+                                                            <option value="Legend Chrome">Legend Chrome</option>
+                                                            <option value="ArmourBrite">ArmourBrite</option>
+                                                            <option value="Polished">Polished</option>
+                                                            <option value="Machined">Machined</option>
+                                                        </select>
+                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="wheelFreeText">Wheel Request <span class="optional">(optional)</span></label>
+                                                <textarea id="wheelFreeText" name="wheelFreeText" rows="3" placeholder="List wheel specs, quantity, offsets, current tyre size, or any unknowns."></textarea>
+                                            </div>
+
+                                            <label class="recommendation-option">
+                                                <input type="checkbox" id="wheelRecommend" name="wheelRecommend" value="Yes">
+                                                <span>
+                                                    <strong>Recommend wheels for my truck</strong>
+                                                    <small>We will check your vehicle, usage, and fitment before quoting.</small>
+                                                </span>
+                                            </label>
+
+                                            <button type="button" class="btn btn-secondary w-full" id="btnAddWheel">
+                                                Add Wheels to Quote
+                                                <i class="ri-add-line" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+
+                                        <div class="privacy-note">
+                                            <i class="ri-lock-2-line" aria-hidden="true"></i>
+                                            <span>Your details are used only to prepare and follow up this enquiry.</span>
+                                        </div>
+
+                                        <div class="form-actions form-actions-between">
+                                            <button type="button" class="btn btn-text prev-step" id="btnPrev">
+                                                <i class="ri-arrow-left-line" aria-hidden="true"></i>
+                                                Back
+                                            </button>
+                                            <button type="submit" class="btn btn-primary submit-btn">
+                                                <span>Submit Request</span>
+                                                <i class="ri-send-plane-fill" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="credential-logos" aria-label="Armoury product credentials">
+                            <div class="credential-badge">
+                                <i class="ri-shield-check-fill" aria-hidden="true"></i>
+                                <span>5-Year Warranty</span>
+                            </div>
+                            <div class="credential-badge">
+                                <i class="ri-award-fill" aria-hidden="true"></i>
+                                <span>Australian Standards &amp; DOT Certified</span>
+                            </div>
+                            <div class="credential-badge">
+                                <i class="ri-drop-line" aria-hidden="true"></i>
+                                <span>Corrosion Resistant</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="sidebar" aria-label="Quote and enquiry information">
+                        <div class="cart-container">
+                            <div class="cart-header">
+                                <div>
+                                    <span class="cart-kicker">Live Quote Cart</span>
+                                    <h2><i class="ri-shopping-cart-2-line" aria-hidden="true"></i> Quote Cart Summary</h2>
+                                </div>
+                                <span class="badge" id="cartCount">0 Items</span>
+                            </div>
+
+                            <div class="cart-body">
+                                <div id="emptyCart" class="empty-cart-state">
+                                    <i class="ri-truck-line empty-icon" aria-hidden="true"></i>
+                                    <p>Your quote cart is empty.</p>
+                                    <span>Add known products, free-text requests, or recommendation notes from Step 2.</span>
+                                </div>
+
+                                <ul id="cartList" class="cart-list hidden"></ul>
+                            </div>
+
+                            <div class="cart-footer">
+                                <p class="summary-note"><i class="ri-information-line" aria-hidden="true"></i> Final fitment, load rating, availability, and pricing will be confirmed by the Armoury team before invoicing.</p>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-card">
+                            <h3>What Happens Next?</h3>
+                            <div class="next-steps">
+                                <div><span>1</span>We review your vehicle details and selected products.</div>
+                                <div><span>2</span>An Armoury specialist confirms fitment and supply options.</div>
+                                <div><span>3</span>You receive a detailed, no-obligation quote.</div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <strong translate="no">Armoury Group</strong>
+                <p>Premium truck wheels, stainless accessories, and expert fitment support.</p>
+            </div>
+            <div class="footer-links">
+                <a href="tel:1300005576">1300 005 576</a>
+                <a href="mailto:sales@armourygroup.com.au">sales@armourygroup.com.au</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
