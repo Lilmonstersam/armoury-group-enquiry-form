@@ -462,11 +462,15 @@ a {
 }
 
 .form-step {
-    display: none;
+    display: block;
     animation: fadeInUp 260ms ease forwards;
 }
 
-.form-step.active {
+.js-enabled .form-step {
+    display: none;
+}
+
+.js-enabled .form-step.active {
     display: block;
 }
 

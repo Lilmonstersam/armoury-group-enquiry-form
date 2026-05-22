@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js-enabled');
+
 document.addEventListener('DOMContentLoaded', () => {
     const accessoriesList = [
         'Air Cleaner Panels',
@@ -63,8 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
         accessoryListContainer.appendChild(label);
     });
 
-    inputEnquiryType.addEventListener('change', (event) => {
-        const isQuoteRequest = event.target.value === 'Product & Quote Requests';
+    const isProductQuoteRequest = () => {
+        const selectedOption = inputEnquiryType.selectedOptions[0];
+        return (selectedOption && selectedOption.dataset.productStep === 'true') || inputEnquiryType.value.toLowerCase().includes('quote');
+    };
+
+    inputEnquiryType.addEventListener('change', () => {
+        const isQuoteRequest = isProductQuoteRequest();
         btnNextStep1Text.innerText = isQuoteRequest ? 'Continue to Products' : 'Submit Enquiry';
         btnNextStep1.querySelector('i').className = isQuoteRequest ? 'ri-arrow-right-line' : 'ri-send-plane-fill';
     });
@@ -131,9 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     btnNextStep1.addEventListener('click', () => {
-        if (!validateStep1()) return;
+        if (!validateStep1()) {
+            const firstInvalid = document.querySelector('.has-error input, .has-error select');
+            if (firstInvalid) firstInvalid.focus();
+            return;
+        }
 
-        if (inputEnquiryType.value !== 'Product & Quote Requests') {
+        if (!isProductQuoteRequest()) {
             submitForm();
             return;
         }
