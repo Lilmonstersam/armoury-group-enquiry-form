@@ -56,29 +56,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCount = document.getElementById('cartCount');
     let cartItems = [];
 
-    accessoriesList.forEach((accessory) => {
-        const label = document.createElement('label');
-        label.className = 'checkbox-item';
-        label.innerHTML = `<input type="checkbox" name="accessories" value="${accessory}"> <span>${accessory}</span>`;
-        accessoryListContainer.appendChild(label);
-    });
-
-    const isProductQuoteRequest = () => {
-        const selectedOption = inputEnquiryType.selectedOptions[0];
-        return (selectedOption && selectedOption.dataset.productStep === 'true') || inputEnquiryType.value.toLowerCase().includes('quote');
-    };
+    if (accessoryListContainer) {
+        accessoriesList.forEach((accessory) => {
+            const label = document.createElement('label');
+            label.className = 'checkbox-item';
+            label.innerHTML = `<input type="checkbox" name="accessories" value="${accessory}"> <span>${accessory}</span>`;
+            accessoryListContainer.appendChild(label);
+        });
+    }
 
     inputEnquiryType.addEventListener('change', () => {
-        const isQuoteRequest = isProductQuoteRequest();
-        btnNextStep1Text.innerText = isQuoteRequest ? 'Continue to Products' : 'Submit Enquiry';
-        btnNextStep1.querySelector('i').className = isQuoteRequest ? 'ri-arrow-right-line' : 'ri-send-plane-fill';
+        btnNextStep1Text.innerText = 'Continue to Products';
+        btnNextStep1.querySelector('i').className = 'ri-arrow-right-line';
     });
 
-    truckModel.addEventListener('change', () => {
-        if (truckModel.value) {
-            accessoryDropdownGroup.classList.remove('hidden');
-        }
-    });
+    if (truckModel) {
+        truckModel.addEventListener('change', () => {
+            if (truckModel.value && accessoryDropdownGroup) {
+                accessoryDropdownGroup.classList.remove('hidden');
+            }
+        });
+    }
 
     const clearErrors = () => {
         document.querySelectorAll('.has-error').forEach((el) => el.classList.remove('has-error'));
@@ -142,15 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (!isProductQuoteRequest()) {
-            submitForm();
-            return;
-        }
-
         goToStep2();
     });
 
-    btnPrev.addEventListener('click', goToStep1);
+    if (btnPrev) btnPrev.addEventListener('click', goToStep1);
 
     const getSelectedAccessories = () => (
         Array.from(document.querySelectorAll('input[name="accessories"]:checked')).map((el) => el.value)
@@ -169,6 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })[char]);
 
     const renderCart = () => {
+        if (!cartList || !emptyCart || !cartCount) return;
+
         cartList.innerHTML = '';
 
         if (cartItems.length === 0) {
@@ -227,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    btnAddAccessory.addEventListener('click', () => {
+    if (btnAddAccessory) btnAddAccessory.addEventListener('click', () => {
         const checked = getSelectedAccessories();
         const freeText = accessoryFreeText.value.trim();
         const recommendation = accessoryRecommend.checked;
@@ -251,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCart();
     });
 
-    btnAddWheel.addEventListener('click', () => {
+    if (btnAddWheel) btnAddWheel.addEventListener('click', () => {
         const freeText = wheelFreeText.value.trim();
         const recommendation = wheelRecommend.checked;
 
