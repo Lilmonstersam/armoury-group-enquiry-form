@@ -1,5 +1,3 @@
-document.documentElement.classList.add('js-enabled');
-
 document.addEventListener('DOMContentLoaded', () => {
     const accessoriesList = [
         'Air Cleaner Panels',
