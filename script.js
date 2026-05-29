@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('quoteForm');
     const progressBar = document.querySelector('.form-progress');
 
-    const inputEnquiryType = document.getElementById('enquiryType');
     const accessoryListContainer = document.getElementById('accessoryList');
     const accessoryDropdownGroup = document.getElementById('accessoryDropdownGroup');
     const truckModel = document.getElementById('truckModel');
@@ -43,10 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnAddAccessory = document.getElementById('btnAddAccessory');
 
     const wheelTruckModel = document.getElementById('wheelTruckModel');
-    const wheelType = document.getElementById('wheelType');
-    const wheelFitment = document.getElementById('wheelFitment');
-    const wheelSize = document.getElementById('wheelSize');
-    const wheelFinish = document.getElementById('wheelFinish');
     const wheelFreeText = document.getElementById('wheelFreeText');
     const wheelRecommend = document.getElementById('wheelRecommend');
     const btnAddWheel = document.getElementById('btnAddWheel');
@@ -65,14 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    inputEnquiryType.addEventListener('change', () => {
-        btnNextStep1Text.innerText = 'Continue to Products';
-        btnNextStep1.querySelector('i').className = 'ri-arrow-right-line';
-    });
-
     if (truckModel) {
-        truckModel.addEventListener('change', () => {
-            if (truckModel.value && accessoryDropdownGroup) {
+        truckModel.addEventListener('input', () => {
+            if (truckModel.value.trim() && accessoryDropdownGroup) {
                 accessoryDropdownGroup.classList.remove('hidden');
             }
         });
@@ -98,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearErrors();
         let isValid = true;
 
-        ['enquiryType', 'firstName', 'lastName', 'email', 'phone'].forEach((id) => {
+        ['firstName', 'lastName', 'email', 'phone'].forEach((id) => {
             const el = document.getElementById(id);
             if (!el.value.trim()) {
                 isValid = false;
@@ -149,8 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
         Array.from(document.querySelectorAll('input[name="accessories"]:checked')).map((el) => el.value)
     );
 
+    const getSelectedFinishes = () => (
+        Array.from(document.querySelectorAll('input[name="wheelFinish"]:checked')).map((el) => el.value)
+    );
+
     const hasWheelSelections = () => (
-        wheelTruckModel.value || wheelType.value || wheelFitment.value || wheelSize.value || wheelFinish.value
+        wheelTruckModel.value.trim() || getSelectedFinishes().length > 0
     );
 
     const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
@@ -185,20 +179,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if (item.category === 'accessories') {
                 const selectedItems = item.items.map(escapeHtml).join(', ');
                 detailsHtml = `
-                    <strong>Truck Accessories</strong>
+                    <strong>Stainless Accessories</strong>
                     ${item.truckModel ? `<span><strong>Truck:</strong> ${escapeHtml(item.truckModel)}</span>` : ''}
                     ${item.items.length ? `<span><strong>Selected:</strong> ${selectedItems}</span>` : ''}
                     ${item.freeText ? `<span><strong>Request:</strong> ${escapeHtml(item.freeText)}</span>` : ''}
                     ${item.recommendation ? '<span><strong>Recommendation:</strong> Requested</span>' : ''}
                 `;
             } else {
+                const selectedFinishes = item.finishes.map(escapeHtml).join(', ');
                 detailsHtml = `
                     <strong>Armoury Wheels</strong>
                     ${item.truckModel ? `<span><strong>Truck:</strong> ${escapeHtml(item.truckModel)}</span>` : ''}
-                    ${item.type ? `<span><strong>Type:</strong> ${escapeHtml(item.type)}</span>` : ''}
-                    ${item.fitment ? `<span><strong>Fitment:</strong> ${escapeHtml(item.fitment)}</span>` : ''}
-                    ${item.size ? `<span><strong>Size:</strong> ${escapeHtml(item.size)}</span>` : ''}
-                    ${item.finish ? `<span><strong>Finish:</strong> ${escapeHtml(item.finish)}</span>` : ''}
+                    ${item.finishes.length ? `<span><strong>Finish:</strong> ${selectedFinishes}</span>` : ''}
                     ${item.freeText ? `<span><strong>Request:</strong> ${escapeHtml(item.freeText)}</span>` : ''}
                     ${item.recommendation ? '<span><strong>Recommendation:</strong> Requested</span>' : ''}
                 `;
@@ -249,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnAddWheel) btnAddWheel.addEventListener('click', () => {
         const freeText = wheelFreeText.value.trim();
         const recommendation = wheelRecommend.checked;
+        const finishes = getSelectedFinishes();
 
         if (!hasWheelSelections() && !freeText && !recommendation) {
             alert('Select wheel details, add a note, choose a truck model, or request a recommendation.');
@@ -257,19 +250,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         cartItems.push({
             category: 'wheel',
-            truckModel: wheelTruckModel.value,
-            type: wheelType.value,
-            fitment: wheelFitment.value,
-            size: wheelSize.value,
-            finish: wheelFinish.value,
+            truckModel: wheelTruckModel.value.trim(),
+            finishes,
             freeText,
             recommendation
         });
 
-        wheelType.value = '';
-        wheelFitment.value = '';
-        wheelSize.value = '';
-        wheelFinish.value = '';
+        document.querySelectorAll('input[name="wheelFinish"]:checked').forEach((el) => { el.checked = false; });
         wheelFreeText.value = '';
         wheelRecommend.checked = false;
         renderCart();

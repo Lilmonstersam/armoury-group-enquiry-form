@@ -108,15 +108,15 @@
                                         <p class="step-subtitle">The essentials we need to get back to you.</p>
 
                                         <div class="form-group">
-                                            <label for="enquiryType">Enquiry Type <span class="required">*</span></label>
+                                            <label for="occasion">Occasion <span class="optional">(optional)</span></label>
                                             <div class="select-wrapper">
                                                 <i class="ri-question-answer-line select-icon" aria-hidden="true"></i>
-                                                <select id="enquiryType" name="enquiryType" required>
-                                                    <option value="" disabled selected>Select enquiry type</option>
-                                                    <option value="Product & Quote Requests" data-product-step="true">Product &amp; Quote Requests</option>
-                                                    <option value="Business & Partnership">Business &amp; Partnership</option>
-                                                    <option value="Support & Technical Advice">Support &amp; Technical Advice</option>
-                                                    <option value="Others">Others</option>
+                                                <select id="occasion" name="occasion">
+                                                    <option value="" disabled selected>Select occasion</option>
+                                                    <option value="Fleet">Fleet</option>
+                                                    <option value="Dealer">Dealer</option>
+                                                    <option value="Owner-Operator">Owner-Operator</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                                 <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
                                             </div>
@@ -151,6 +151,14 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="postcode">Postcode <span class="optional">(optional)</span></label>
+                                            <div class="input-with-icon">
+                                                <i class="ri-map-pin-line" aria-hidden="true"></i>
+                                                <input type="text" id="postcode" name="postcode" placeholder="e.g. 2000" autocomplete="postal-code" maxlength="4" inputmode="numeric" pattern="[0-9]{4}">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="message">Additional Details <span class="optional">(optional)</span></label>
                                             <textarea id="message" name="message" rows="4" placeholder="Tell us about fitment questions, fleet quantity, timing, or anything unusual."></textarea>
                                         </div>
@@ -168,31 +176,17 @@
                                         <p class="step-subtitle">Add wheels, accessories, free-text notes, or ask us to recommend the right setup.</p>
 
                                         <div class="builder-section">
-                                            <h4><i class="ri-truck-line" aria-hidden="true"></i> Truck Accessories</h4>
+                                            <h4><i class="ri-truck-line" aria-hidden="true"></i> Stainless Accessories</h4>
                                             <div class="form-group">
                                                 <label for="truckModel">Truck Make &amp; Model</label>
-                                                <div class="select-wrapper">
-                                                    <select id="truckModel" name="truckModel">
-                                                        <option value="" disabled selected>Select your vehicle</option>
-                                                        <option value="KENWORTH K200">KENWORTH K200</option>
-                                                        <option value="KENWORTH K220">KENWORTH K220</option>
-                                                        <option value="KENWORTH T360">KENWORTH T360</option>
-                                                        <option value="KENWORTH T409">KENWORTH T409</option>
-                                                        <option value="KENWORTH T410">KENWORTH T410</option>
-                                                        <option value="KENWORTH T610">KENWORTH T610</option>
-                                                        <option value="KENWORTH T659">KENWORTH T659</option>
-                                                        <option value="KENWORTH T909">KENWORTH T909</option>
-                                                        <option value="KENWORTH C509">KENWORTH C509</option>
-                                                        <option value="LEGEND SAR">LEGEND SAR</option>
-                                                        <option value="VOLVO">VOLVO</option>
-                                                        <option value="Other">Other / not listed</option>
-                                                    </select>
-                                                    <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                <div class="input-with-icon">
+                                                    <i class="ri-truck-line" aria-hidden="true"></i>
+                                                    <input type="text" id="truckModel" name="truckModel" placeholder="e.g. Kenworth T610">
                                                 </div>
                                             </div>
 
                                             <div class="form-group hidden" id="accessoryDropdownGroup">
-                                                <label>Select Accessories <span class="optional">(optional)</span></label>
+                                                <label>Stainless Accessories <span class="optional">(optional)</span></label>
                                                 <div class="checkbox-list" id="accessoryList"></div>
                                             </div>
 
@@ -222,85 +216,19 @@
 
                                             <div class="form-group">
                                                 <label for="wheelTruckModel">Truck Make &amp; Model</label>
-                                                <div class="select-wrapper">
-                                                    <select id="wheelTruckModel" name="wheelTruckModel">
-                                                        <option value="" disabled selected>Select your vehicle</option>
-                                                        <option value="KENWORTH K200">KENWORTH K200</option>
-                                                        <option value="KENWORTH K220">KENWORTH K220</option>
-                                                        <option value="KENWORTH T360">KENWORTH T360</option>
-                                                        <option value="KENWORTH T409">KENWORTH T409</option>
-                                                        <option value="KENWORTH T410">KENWORTH T410</option>
-                                                        <option value="KENWORTH T610">KENWORTH T610</option>
-                                                        <option value="KENWORTH T659">KENWORTH T659</option>
-                                                        <option value="KENWORTH T909">KENWORTH T909</option>
-                                                        <option value="KENWORTH C509">KENWORTH C509</option>
-                                                        <option value="LEGEND SAR">LEGEND SAR</option>
-                                                        <option value="VOLVO">VOLVO</option>
-                                                        <option value="Other">Other / not listed</option>
-                                                    </select>
-                                                    <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
+                                                <div class="input-with-icon">
+                                                    <i class="ri-truck-line" aria-hidden="true"></i>
+                                                    <input type="text" id="wheelTruckModel" name="wheelTruckModel" placeholder="e.g. Kenworth T610">
                                                 </div>
                                             </div>
 
-                                            <div class="form-row">
-                                                <div class="form-group half">
-                                                    <label for="wheelType">Wheel Type</label>
-                                                    <div class="select-wrapper">
-                                                        <select id="wheelType" name="wheelType">
-                                                            <option value="" disabled selected>Select type</option>
-                                                            <option value="DRIVE">DRIVE</option>
-                                                            <option value="OFFSET STEER">OFFSET STEER</option>
-                                                            <option value="STEER">STEER</option>
-                                                            <option value="SUPER SINGLE">SUPER SINGLE</option>
-                                                            <option value="TRAILER">TRAILER</option>
-                                                        </select>
-                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group half">
-                                                    <label for="wheelFitment">Fitment</label>
-                                                    <div class="select-wrapper">
-                                                        <select id="wheelFitment" name="wheelFitment">
-                                                            <option value="" disabled selected>Select fitment</option>
-                                                            <option value="EURO/JAP">EURO/JAP</option>
-                                                            <option value="US">US</option>
-                                                            <option value="TRAILER">TRAILER</option>
-                                                        </select>
-                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group half">
-                                                    <label for="wheelSize">Size</label>
-                                                    <div class="select-wrapper">
-                                                        <select id="wheelSize" name="wheelSize">
-                                                            <option value="" disabled selected>Select size</option>
-                                                            <option value="16&quot; X 5.5&quot;">16" X 5.5"</option>
-                                                            <option value="17.5&quot; X 6.00&quot;">17.5" X 6.00"</option>
-                                                            <option value="17.5&quot; X 6.75&quot;">17.5" X 6.75"</option>
-                                                            <option value="17.5&quot; X 6&quot;">17.5" X 6"</option>
-                                                            <option value="19.5&quot; X 6.75&quot;">19.5" X 6.75"</option>
-                                                            <option value="19.5&quot; X 7.5&quot;">19.5" X 7.5"</option>
-                                                            <option value="22.5&quot; X 11.75&quot;">22.5" X 11.75"</option>
-                                                            <option value="22.5&quot; X 8.25&quot;">22.5" X 8.25"</option>
-                                                        </select>
-                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group half">
-                                                    <label for="wheelFinish">Finish</label>
-                                                    <div class="select-wrapper">
-                                                        <select id="wheelFinish" name="wheelFinish">
-                                                            <option value="" disabled selected>Select finish</option>
-                                                            <option value="Legend Chrome">Legend Chrome</option>
-                                                            <option value="ArmourBrite">ArmourBrite</option>
-                                                            <option value="Polished">Polished</option>
-                                                            <option value="Machined">Machined</option>
-                                                        </select>
-                                                        <i class="ri-arrow-down-s-line select-arrow" aria-hidden="true"></i>
-                                                    </div>
+                                            <div class="form-group">
+                                                <label>Finish <span class="optional">(optional, select all that apply)</span></label>
+                                                <div class="checkbox-list" id="wheelFinishList">
+                                                    <label class="checkbox-item"><input type="checkbox" name="wheelFinish" value="Legend Chrome"> <span>Legend Chrome</span></label>
+                                                    <label class="checkbox-item"><input type="checkbox" name="wheelFinish" value="ArmourBrite"> <span>ArmourBrite</span></label>
+                                                    <label class="checkbox-item"><input type="checkbox" name="wheelFinish" value="Polished"> <span>Polished</span></label>
+                                                    <label class="checkbox-item"><input type="checkbox" name="wheelFinish" value="Machined"> <span>Machined</span></label>
                                                 </div>
                                             </div>
 
